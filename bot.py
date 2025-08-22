@@ -120,6 +120,13 @@ async def checkperms(interaction: discord.Interaction):
     message = "\n".join(", ".join(chunk) for chunk in chunks)
 
     await interaction.response.send_message(f"Your permission(s) is(are) :\n{message}", ephemeral=True)
+    
+# /tips
+@bot.tree.command(name="tips", description="Recieve a random tip")
+async def tips(interaction: discord.Interaction):
+    tips: list
+    msg_ind = random.randint(0, len(tips))
+    await interaction.response.send_message(tips[msg_ind], ephemeral=True)
 
 
 # /help
