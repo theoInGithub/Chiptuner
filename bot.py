@@ -12,6 +12,12 @@ intents.members = True
 
 bot = commands.Bot(command_prefix="!", intents=intents)
 
+banned_words: list
+
+# Exception Channels
+ignored_channels: list
+LOG_CHANNEL_ID: int
+
 def is_admin():
     async def predicate(interaction: discord.Interaction):
         return interaction.user.guild_permissions.moderate_members
