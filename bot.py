@@ -42,6 +42,15 @@ async def on_ready():
     except Exception as e:
         print(f"Sync error: {e}")
 
+# Update - Morning Call
+@tasks.loop(minutes=1)
+async def morning_call():
+    now = datetime.now()
+    if now.hour == 9 and now.minute == 00:  # 3:45 PM
+        channel = bot.get_channel(Morning_Call_Id)
+        if channel:
+            await channel.send("Morning @everyone")
+            print("message sent")
 
 # Auto-detect banned words in chat
 @bot.event
